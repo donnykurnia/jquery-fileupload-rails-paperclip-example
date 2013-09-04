@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-JqueryFileuploadRailsExample::Application.config.secret_token = '53799ea9a3d06ff292dc489c308943155ef18f4a6aaab7176c4b8fcfc123294e3ff69df9327c65d0c0021efe3feb8b57ce8c233802916f76ee13737fda04983c'
+JqueryFileuploadRailsExample::Application.config.secret_key_base = '53799ea9a3d06ff292dc489c308943155ef18f4a6aaab7176c4b8fcfc123294e3ff69df9327c65d0c0021efe3feb8b57ce8c233802916f76ee13737fda04983c'
