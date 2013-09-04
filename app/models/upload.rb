@@ -1,6 +1,8 @@
 class Upload < ActiveRecord::Base
-  # paperclip
-  has_attached_file :upload
+  # paperclip with the upload path default configuration
+  has_attached_file :upload,
+    :path => ":rails_root/public:url",
+    :url  => "/system/:class/:attachment/:id_partition/:style/:filename"
 
   include Rails.application.routes.url_helpers
 
