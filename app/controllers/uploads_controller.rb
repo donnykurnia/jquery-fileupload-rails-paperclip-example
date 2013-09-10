@@ -4,8 +4,11 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @reffids = Upload.select(:reffid).group(:reffid).uniq
-    @uploads = Upload.where(reffid: params[:reffid])
+    if params[:reffid]
+      @uploads = Upload.where(reffid: params[:reffid])
+    else
+      @uploads = Upload.select(:reffid).group(:reffid).uniq
+    end
   end
 
   # GET /uploads/1

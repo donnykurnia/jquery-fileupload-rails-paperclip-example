@@ -1,6 +1,10 @@
 <div id="uploads_area">
-  <%= render partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) } %>
-  <%= render partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) } %>
+  <% @uploads.each do |upload| %>
+    <%= render partial: 'form', locals: { upload: Upload.new( reffid: upload.reffid ) } %>
+  <% end %>
+  <% 1.downto(@uploads.length) do %>
+    <%= render partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) } %>
+  <% end %>
 </div>
 
 <%= link_to "Add upload prompt", new_upload_path, class: "btn btn-primary", remote: true %>
@@ -16,19 +20,22 @@
       });
     });
     // Load existing files:
-    /*
-    $.getJSON($('#fileupload').prop('action'), function (files) {
-      var fu = $('#fileupload').data('blueimpFileupload'),
-        template;
-      fu._adjustMaxNumberOfFiles(-files.length);
-      // console.log(files);
-      template = fu._renderDownload(files)
-        .appendTo($('#fileupload .files'));
-      // Force reflow:
-      fu._reflow = fu._transition && template.length &&
-        template[0].offsetWidth;
-      template.addClass('in');
-      $('#loading').remove();
-    });//*/
+    $('.fileupload').each(function () {
+      var reffid = $(this).find('.reffid').val();
+      var form = $(this);
+      $.getJSON(form.prop('action'), {'reffid': reffid}, function (files) {
+        var fu = form.data('blueimpFileupload'),
+          template;
+        fu._adjustMaxNumberOfFiles(-files.length);
+        // console.log(files);
+        template = fu._renderDownload(files)
+          .appendTo(form.find('.files'));
+        // Force reflow:
+        fu._reflow = fu._transition && template.length &&
+          template[0].offsetWidth;
+        template.addClass('in');
+        $('#loading').remove();
+      });
+    });
   });
 </script>
