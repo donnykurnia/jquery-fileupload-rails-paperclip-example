@@ -1,0 +1,7 @@
+var upload_prompt = "<%= j render(partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) }) %>";
+$("#uploads_area").append(upload_prompt);
+$('.fileupload', upload_prompt).each(function () {
+  $(this).fileupload({
+    dropZone: $(this)
+  });
+});

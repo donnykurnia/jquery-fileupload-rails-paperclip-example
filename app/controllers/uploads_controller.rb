@@ -4,7 +4,8 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    @uploads = Upload.all
+    @reffids = Upload.select(:reffid).group(:reffid).uniq
+    @uploads = Upload.where(reffid: params[:reffid])
   end
 
   # GET /uploads/1
@@ -74,6 +75,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:upload)
+      params.require(:upload).permit(:upload, :reffid)
     end
 end

@@ -8,6 +8,7 @@ class Upload < ActiveRecord::Base
 
   def to_jq_upload
     {
+      "reffid" => read_attribute(:reffid),
       "name" => read_attribute(:upload_file_name),
       "size" => read_attribute(:upload_file_size),
       "url" => upload.url(:original),
