@@ -1,7 +1,9 @@
 <div id="uploads_area">
+  <!-- This will show upload prompt based on existing unique reffid in database. -->
   <% @uploads.each do |upload| %>
     <%= render partial: 'form', locals: { upload: Upload.new( reffid: upload.reffid ) } %>
   <% end %>
+  <!-- show the blank prompt based on the number of existing uploads data. If there are no data, it will show 2 upload prompt. If there are 1 data, it will show 1 upload prompt. If data >= 2, then it will show no blank prompt -->
   <% 1.downto(@uploads.length) do %>
     <%= render partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) } %>
   <% end %>
