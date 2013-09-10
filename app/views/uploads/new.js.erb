@@ -1,7 +1,13 @@
+// render the partial form
 var upload_prompt = "<%= j render(partial: 'form', locals: { upload: Upload.new( reffid: SecureRandom.uuid ) }) %>";
+
+// append into placeholder area
 $("#uploads_area").append(upload_prompt);
+
+// find the newly added form id then get the form object
 var form_id = $(upload_prompt).find('.fileupload').attr('id');
 var form = $("#"+form_id);
+
 // Initialize the jQuery File Upload widget:
 form.fileupload({
   dropZone: form
