@@ -5,8 +5,10 @@ class UploadsController < ApplicationController
   # GET /uploads.json
   def index
     if params[:reffid]
+      #get uploads data based on the reffid in params
       @uploads = Upload.where(reffid: params[:reffid])
     else
+      #to get only the stored reffids
       @uploads = Upload.select(:reffid).group(:reffid).uniq
     end
   end
