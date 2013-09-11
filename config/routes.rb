@@ -1,8 +1,9 @@
 JqueryFileuploadRailsExample::Application.routes.draw do
 
-  resources :prompts do
-    resources :uploads
+  resources :prompts, only: [:index, :new, :show] do
+    resources :uploads, only: [:index]
   end
+  resources :uploads, only: [:create, :show, :destroy]
   root 'prompts#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
