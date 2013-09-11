@@ -4,28 +4,8 @@ class UploadsController < ApplicationController
   # GET /uploads
   # GET /uploads.json
   def index
-    if params[:reffid]
-      #get uploads data based on the reffid in params
-      @uploads = Upload.where(reffid: params[:reffid])
-    else
-      #to get only the stored reffids
-      @uploads = Upload.select(:reffid).group(:reffid).uniq
-    end
-  end
-
-  # GET /uploads/1
-  # GET /uploads/1.json
-  def show
-  end
-
-  # GET /uploads/new
-  # GET /uploads/new.json
-  def new
-    @upload = Upload.new
-  end
-
-  # GET /uploads/1/edit
-  def edit
+    @prompt = Prompt.find(params[:prompt_id])
+    @uploads = @prompt.uploads
   end
 
   # POST /uploads
@@ -43,20 +23,6 @@ class UploadsController < ApplicationController
         format.json { render json: {files: [@upload.to_jq_upload]}, status: :created, location: @upload }
       else
         format.html { render action: 'new' }
-        format.json { render json: @upload.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /uploads/1
-  # PATCH/PUT /uploads/1.json
-  def update
-    respond_to do |format|
-      if @upload.update(upload_params)
-        format.html { redirect_to @upload, notice: 'Upload was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
         format.json { render json: @upload.errors, status: :unprocessable_entity }
       end
     end
@@ -80,6 +46,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:upload, :reffid)
+      params.require(:upload).permit(:upload, :prompt_id)
     end
 end

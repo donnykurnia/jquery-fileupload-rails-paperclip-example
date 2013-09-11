@@ -1,0 +1,39 @@
+<div id="prompt_area">
+  <!-- This will show upload prompt from database. -->
+  <% @prompts.each do |prompt| %>
+    <%= render prompt %>
+  <% end %>
+</div>
+
+<%= link_to "Add upload prompt", new_prompt_path, class: "btn btn-primary", remote: true %>
+
+<%= render 'shared/jquery_upload_template' %>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    // Initialize the jQuery File Upload widget:
+    $('.fileupload').each(function () {
+      $(this).fileupload({
+        dropZone: $(this)
+      });
+    });
+    // Load existing files:
+    $('.fileupload').each(function () {
+      var prompt_id = $(this).find('.prompt_id').val();
+      var form = $(this);
+      $.getJSON(form.data('uploads-url'), function (files) {
+        var fu = form.data('blueimpFileupload'),
+          template;
+        fu._adjustMaxNumberOfFiles(-files.length);
+        // console.log(files);
+        template = fu._renderDownload(files)
+          .appendTo(form.find('.files'));
+        // Force reflow:
+        fu._reflow = fu._transition && template.length &&
+          template[0].offsetWidth;
+        template.addClass('in');
+        $('#loading').remove();
+      });
+    });
+  });
+</script>
