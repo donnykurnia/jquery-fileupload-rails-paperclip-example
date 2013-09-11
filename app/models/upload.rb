@@ -4,6 +4,9 @@ class Upload < ActiveRecord::Base
     :path => ":rails_root/public:url",
     :url  => "/system/:class/:attachment/:id_partition/:style/:filename"
 
+  # associations
+  belongs_to :prompt
+
   include Rails.application.routes.url_helpers
 
   def to_jq_upload
