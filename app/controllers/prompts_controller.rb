@@ -12,6 +12,16 @@ class PromptsController < ApplicationController
     @prompt = Prompt.create(uuid: SecureRandom.uuid)
   end
 
+  # DELETE /uploads/1
+  # DELETE /uploads/1.json
+  def destroy
+    @prompt.destroy
+    respond_to do |format|
+      format.html { redirect_to prompts_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_prompt

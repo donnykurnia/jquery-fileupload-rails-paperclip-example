@@ -1,5 +1,12 @@
 <div class="container well">
   <h2>Upload file</h2>
+  <div>
+    Upload Prompt UUID: <%= prompt.uuid %>
+    <%= link_to prompt, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger delete" do %>
+      <i class="icon-trash icon-white"></i>
+      <span>Delete Prompt and all files in it</span>
+    <% end %>
+  </div><br/>
   <%= form_for prompt.uploads.build, html: { multipart: true, class: "fileupload", id: "upload_for_prompt_#{prompt.id}", data: { uploads_url: prompt_uploads_path(prompt) }  } do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">

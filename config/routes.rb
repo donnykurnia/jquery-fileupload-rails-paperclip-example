@@ -1,6 +1,6 @@
 JqueryFileuploadRailsExample::Application.routes.draw do
 
-  resources :prompts, only: [:index, :new] do
+  resources :prompts, only: [:index, :new, :destroy] do
     resources :uploads, only: [:index]
   end
   resources :uploads, only: [:create, :destroy]
