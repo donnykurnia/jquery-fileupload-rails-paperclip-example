@@ -3,6 +3,6 @@ class Prompt < ActiveRecord::Base
   has_many :uploads, dependent: :destroy
 
   # scope
-  default_scope order('created_at asc')
+  default_scope { order('created_at asc') }
 
 end
