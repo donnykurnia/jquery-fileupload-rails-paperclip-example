@@ -49,7 +49,7 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
 # uploads
-gem 'jquery-fileupload-rails'
+gem 'jquery-fileupload-rails', github: 'demiazz/jquery-fileupload-rails'
 # gem 'paperclip'
 gem "mini_magick"
 gem "carrierwave", "~> 0.9.0"
