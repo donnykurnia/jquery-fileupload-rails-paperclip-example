@@ -13,7 +13,7 @@ class Upload < ActiveRecord::Base
 
   def to_jq_upload
     {
-      "name" => read_attribute(:upload),
+      "name" => read_attribute(:upload_file_name),
       "size" => upload.size,
       "url" => upload.url,
       "delete_url" => upload_path(self),
