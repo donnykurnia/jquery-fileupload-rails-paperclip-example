@@ -10,3 +10,8 @@
 //= require twitter/bootstrap
 //= require jquery-fileupload
 //= require_tree .
+
+// to reenable upload after title typed in
+$(document).on('keydown', '.upload_title', function(){
+  $(this).closest('.template-upload').find('.btn[disabled]').prop('disabled', false);
+});
