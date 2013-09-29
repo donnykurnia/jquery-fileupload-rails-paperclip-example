@@ -46,6 +46,11 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'less-rails'
-gem 'jquery-fileupload-rails'
-gem 'paperclip'
 gem 'twitter-bootstrap-rails'
+
+# uploads
+gem 'jquery-fileupload-rails'
+# gem 'paperclip'
+gem "mini_magick"
+gem "carrierwave", "~> 0.9.0"
+gem "fog", "~> 1.15.0"
