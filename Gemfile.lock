@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/demiazz/jquery-fileupload-rails.git
-  revision: 0a7726becc2f94fd2e8515bc215398d8a56c1562
+  remote: git://github.com/donnykurnia/jquery-fileupload-rails.git
+  revision: f3569ebfb404bfa57788eccc02737be2b1d18bb8
   specs:
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
