@@ -28,18 +28,17 @@
     $('.fileupload').each(function () {
       var prompt_id = $(this).find('.prompt_id').val();
       var form = $(this);
+      form.addClass('fileupload-processing');
       $.getJSON(form.data('uploads-url'), function (files) {
         var fu = form.data('blueimpFileupload'),
           template;
-        fu._adjustMaxNumberOfFiles(-files.length);
-        // console.log(files);
         template = fu._renderDownload(files)
           .appendTo(form.find('.files'));
         // Force reflow:
         fu._reflow = fu._transition && template.length &&
           template[0].offsetWidth;
         template.addClass('in');
-        $('#loading').remove();
+        form.removeClass('fileupload-processing');
       });
     });
   });
