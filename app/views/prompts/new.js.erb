@@ -11,4 +11,11 @@ var form = $("#"+form_id);
 // Initialize the jQuery File Upload widget:
 form.fileupload({
   dropZone: form
+}).bind('fileuploadsubmit', function (e, data) {
+  var prompt_id = data.form.find('.prompt_id').first();
+  var inputs = data.context.find('input:text');
+  if (inputs.filter('[required]').filter(function() { return $(this).val() == ""; }).first().focus().length) {
+    return false;
+  }
+  data.formData = $.merge(inputs, prompt_id).serializeArray();
 });
