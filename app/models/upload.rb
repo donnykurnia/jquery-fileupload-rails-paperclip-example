@@ -17,7 +17,8 @@ class Upload < ActiveRecord::Base
       "size" => upload.size,
       "url" => upload.url,
       "delete_url" => upload_path(self),
-      "delete_type" => "DELETE"
+      "delete_type" => "DELETE",
+      "title" => read_attribute(:title)
     }
   end
 
