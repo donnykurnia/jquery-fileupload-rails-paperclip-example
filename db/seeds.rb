@@ -7,5 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 # Create first 2 prompt
-Prompt.create(uuid: SecureRandom.uuid)
-Prompt.create(uuid: SecureRandom.uuid)
+1.downto(Prompt.count) do
+  Prompt.create(uuid: SecureRandom.uuid)
+end
