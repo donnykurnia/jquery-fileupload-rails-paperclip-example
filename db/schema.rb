@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911055418) do
+ActiveRecord::Schema.define(version: 20130929044624) do
 
   create_table "prompts", force: true do |t|
     t.string   "uuid"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130911055418) do
     t.datetime "updated_at",          null: false
     t.string   "reffid"
     t.integer  "prompt_id"
+    t.string   "title"
   end
 
   add_index "uploads", ["prompt_id"], name: "index_uploads_on_prompt_id"
