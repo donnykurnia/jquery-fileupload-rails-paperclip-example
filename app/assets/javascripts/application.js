@@ -7,6 +7,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require jquery-fileupload
 //= require twitter/bootstrap
+//= require jquery-fileupload
 //= require_tree .
