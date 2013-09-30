@@ -15,7 +15,7 @@
         <span class="btn btn-success fileinput-button">
           <i class="icon-plus icon-white"></i>
           <span>Add files...</span>
-          <%= f.file_field :upload %>
+          <%= f.file_field :upload, multiple: true %>
           <%= f.hidden_field :prompt_id, class: 'prompt_id' %>
         </span>
         <button type="submit" class="btn btn-primary start">

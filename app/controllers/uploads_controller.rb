@@ -11,7 +11,7 @@ class UploadsController < ApplicationController
   # POST /uploads
   # POST /uploads.json
   def create
-    @upload = Upload.new(upload_params)
+    @upload = Upload.new(upload: upload_params[:upload][0], title: upload_params[:title][0], prompt_id: upload_params[:prompt_id])
 
     respond_to do |format|
       if @upload.save
@@ -46,6 +46,6 @@ class UploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def upload_params
-      params.require(:upload).permit(:upload, :title, :prompt_id)
+      params.require(:upload).permit({upload: []}, {title: []}, :prompt_id)
     end
 end
