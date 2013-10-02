@@ -16,17 +16,15 @@
       $(this).fileupload({
         dropZone: $(this)
       }).bind('fileuploadsubmit', function (e, data) {
-        var prompt_id = data.form.find('.prompt_id').first();
         var inputs = data.context.find('input:text');
         if (inputs.filter('[required]').filter(function() { return $(this).val() == ""; }).first().focus().length) {
           return false;
         }
-        data.formData = $.merge(inputs, prompt_id).serializeArray();
+        data.formData = inputs.serializeArray();
       });
     });
     // Load existing files:
     $('.fileupload').each(function () {
-      var prompt_id = $(this).find('.prompt_id').val();
       var form = $(this);
       form.addClass('fileupload-processing');
       $.getJSON(form.data('uploads-url'), function (files) {

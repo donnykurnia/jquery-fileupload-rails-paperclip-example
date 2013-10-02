@@ -7,7 +7,7 @@
       <span>Delete Prompt and all files in it</span>
     <% end %>
   </div><br/>
-  <%= form_for prompt.uploads.build, html: { multipart: true, class: "fileupload", id: "upload_for_prompt_#{prompt.id}", data: { uploads_url: prompt_uploads_path(prompt) }  } do |f| %>
+  <%= form_for [prompt, prompt.uploads.build], html: { multipart: true, class: "fileupload", id: "upload_for_prompt_#{prompt.id}", data: { uploads_url: prompt_uploads_path(prompt) }  } do |f| %>
     <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
     <div class="row fileupload-buttonbar">
       <div class="span7">
@@ -16,7 +16,6 @@
           <i class="icon-plus icon-white"></i>
           <span>Add files...</span>
           <%= f.file_field :upload, multiple: true %>
-          <%= f.hidden_field :prompt_id, class: 'prompt_id' %>
         </span>
         <button type="submit" class="btn btn-primary start">
           <i class="icon-upload icon-white"></i>
