@@ -13,5 +13,5 @@
 
 // to reenable upload after title typed in
 $(document).on('keydown', '.upload_title', function(){
-  $(this).closest('.template-upload').find('.btn[disabled]').prop('disabled', false);
+  $('button.start[disabled]').prop('disabled', false);
 });
